@@ -24,7 +24,7 @@ export default function RootLayout({
       <NextUIProvider>
         <div className='relative flex min-h-screen flex-col'>
             <Navigation/>
-          <main className='container mx-auto  mb-8 max-w-screen-lg flex-grow px-6'>
+          <main className='mb-8 flex-grow'>
             {children}
           </main>
           <Footer />

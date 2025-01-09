@@ -1,4 +1,6 @@
-import { Button } from '@nextui-org/react';
+import HeroSection from '../components/HeroSection';
+import LogoSection from '../components/LogoSection';
+import AdvantagesSection from '../components/AdvantagesSection';
 
 export default function Index() {
   /*
@@ -7,8 +9,10 @@ export default function Index() {
    * Note: The corresponding styles are in the ./index.tailwind file.
    */
   return (
-    <div className='h-[4000px]'>
-     dfg
-    </div>
+    <>
+      <HeroSection />
+      <LogoSection />
+      <AdvantagesSection />
+    </>
   );
 }
