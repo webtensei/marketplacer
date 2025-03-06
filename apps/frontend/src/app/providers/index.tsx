@@ -5,12 +5,16 @@ import { withSuspense } from "@app/providers/with-suspense";
 // import {GlobalErrorPage} from '@pages/error';
 import "../styles/index.css";
 import { FC, ReactNode } from "react";
+import { HeroUiGlobalProvider } from "./with-hero-ui";
 
 function Providers() {
   return (
+    <HeroUiGlobalProvider>
       <QueryClientProvider>
           <BrowserRouter />
       </QueryClientProvider>
+    </HeroUiGlobalProvider>
+
   );
 }
 
