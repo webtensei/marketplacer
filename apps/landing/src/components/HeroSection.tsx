@@ -41,7 +41,7 @@ const HeroSection = () => {
       {/* Правый блок: Изображение */}
         <figure className="col-span-1 flex items-center justify-center relative">
           <Image
-            src="/hero-section-primary-image.png"
+            src="/hero-section-primary-image.svg"
             alt="Скриншот страницы создания карточки для маркетплейсов, скриншот аналитики карточки товара, процесс автоматизации с использованием нашего приложения"
             width={700}
             height={500}

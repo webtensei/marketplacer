@@ -5,7 +5,17 @@
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "strict": true,
-    "types": ["vite/client"]
+    "types": ["vite/client"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@app/*": ["./src/app/*"],
+      "@shared/*": ["./src/shared/*"],
+      "@entities/*": ["./src/entities/*"],
+      "@features/*": ["./src/features/*"],
+      "@widgets/*": ["./src/widgets/*"],
+      "@pages/*": ["./src/pages/*"]
+    },
   },
   "files": [],
   "include": [],

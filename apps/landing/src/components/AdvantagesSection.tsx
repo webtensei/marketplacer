@@ -19,7 +19,7 @@ const AdvantagesSection = () => {
         {/*  тут про сквозную интеграцию, единый интерфейс, экономию на скорости */}
         <figure className="col-span-1 max-w-[460px] flex items-center justify-center relative">
           <Image
-            src="/automatization-advantage-image.png"
+            src="/automatization-advantage-image.svg"
             alt="Изображение функций различных маркетплейсов и сквозной оптимизации процессов благодаря marketplacer"
             width={460}
             height={300}
@@ -48,7 +48,7 @@ const AdvantagesSection = () => {
         {/*  тут про сквозную интеграцию, единый интерфейс, экономию на скорости */}
         <figure className="col-span-1 max-w-[460px] flex items-center justify-center relative">
           <Image
-            src="/automatization-advantage-image.png"
+            src="/automatization-advantage-image.svg"
             alt="Скриншот страницы создания карточки для маркетплейсов, скриншот аналитики карточки товара, процесс автоматизации с использованием нашего приложения"
             width={460}
             height={300}
