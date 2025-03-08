@@ -1,9 +1,10 @@
 import { createElement } from "react";
 import { createBrowserRouter, RouterProvider, useRouteError } from "react-router-dom";
 import { createGuestLayout } from "@app/composition/layout/guest";
-import { routes } from "@shared/lib/react-router";
 import { createAuthView } from "@app/composition/view";
-import { Button } from "@nextui-org/react";
+import { LoginRoute } from "@/pages/auth/login";
+import { RegisterRoute } from "@/pages/auth/register";
+
 // https://github.com/remix-run/react-router/discussions/10166
 function BubbleError() {
   const error = useRouteError();
@@ -17,10 +18,8 @@ const router = createBrowserRouter([
     children: [
       createGuestLayout(
         createAuthView(
-          {
-            path: "/",
-            element: <div><Button color="warning">Home</Button></div>,
-          },
+          LoginRoute(),
+          RegisterRoute()
         ),
 
 
@@ -33,5 +32,7 @@ const router = createBrowserRouter([
 ]);
 
 export function BrowserRouter() {
-  return <RouterProvider router={router} />;
+  return (
+    <RouterProvider router={router} />
+  );
 }

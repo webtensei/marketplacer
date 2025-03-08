@@ -9,11 +9,12 @@ import { HeroUiGlobalProvider } from "./with-hero-ui";
 
 function Providers() {
   return (
-    <HeroUiGlobalProvider>
       <QueryClientProvider>
-          <BrowserRouter />
+          <HeroUiGlobalProvider>
+            <BrowserRouter />    
+          </HeroUiGlobalProvider>
       </QueryClientProvider>
-    </HeroUiGlobalProvider>
+
 
   );
 }

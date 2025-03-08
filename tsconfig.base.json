@@ -14,7 +14,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@marketplacer/prisma-client": ["libs/prisma-client/src/index.ts"],
+      "@marketplacer/shared-models": ["libs/shared-models/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
