@@ -1,0 +1,44 @@
+{
+  "name": "team-service",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/team-service/src",
+  "projectType": "application",
+  "tags": [],
+ "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "webpack-cli build",
+        "args": ["node-env=development"]
+      },
+      "configurations": {
+        "production": {
+          "args": ["node-env=production"]
+        }
+      }
+    },
+    "build-dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "webpack-cli build --node-env development --config apps/team-service/webpack.config.js"
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "dependsOn": ["build"],
+      "options": {
+        "buildTarget": "team-service:build",
+        "runBuildTargetDependencies": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "team-service:build:development"
+        },
+        "production": {
+          "buildTarget": "team-service:build:production"
+        }
+      }
+    }
+  }
+}

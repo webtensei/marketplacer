@@ -1,0 +1,61 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start All Services",
+      "dependsOn": [
+        "API Gateway",
+        "Auth Service",
+        "User Service",
+        "Team Service"
+      ],
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
+    },
+    {
+      "label": "API Gateway",
+      "type": "shell",
+      "command": "yarn nx serve api-gateway",
+      "isBackground": true,
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "group": "services"
+      }
+    },
+    {
+      "label": "Auth Service",
+      "type": "shell",
+      "command": "yarn nx serve auth-service",
+      "isBackground": true,
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "group": "services"
+      }
+    },
+    {
+      "label": "User Service",
+      "type": "shell",
+      "command": "yarn nx serve user-service",
+      "isBackground": true,
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "group": "services"
+      }
+    },
+    {
+      "label": "Team Service",
+      "type": "shell",
+      "command": "yarn nx serve team-service",
+      "isBackground": true,
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "group": "services"
+      }
+    }
+  ]
+} 
