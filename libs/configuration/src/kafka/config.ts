@@ -30,13 +30,21 @@ export const KAFKA_CONFIG = {
       DELETE: 'user.delete',
       GET_ONE: 'user.get-one',
       GET_ALL: 'user.get-all',
+      GET_USER_BY_ID: 'user.get-user-by-id',
     },
     AUTH: {
-      REGISTER: 'auth.register',
       LOGIN: 'auth.login',
       LOGOUT: 'auth.logout',
+      REGISTER: 'auth.register',
       REFRESH_TOKEN: 'auth.refresh-token',
-      VERIFY_TOKEN: 'auth.verify-token',
+      RESET_PASSWORD: 'auth.reset-password',
+      
+      GOOGLE: 'auth.google',
+      GOOGLE_CALLBACK: 'auth.google-callback',
+      GOOGLE_SUCCESS: 'auth.google-success',
+      YANDEX: 'auth.yandex',
+      YANDEX_CALLBACK: 'auth.yandex-callback',
+      YANDEX_SUCCESS: 'auth.yandex-success',
     },
   },
 

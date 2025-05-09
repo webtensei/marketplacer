@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@marketplacer/configuration": ["libs/configuration/src/index.ts"],
-      "@marketplacer/prisma-client": ["libs/prisma-client/src/index.ts"],
+      "@marketplacer/prisma-client": ["libs/prisma-client/prisma-service/index.ts"],
+      "@marketplacer/shared-backend": ["libs/shared-backend/src/index.ts"],
       "@marketplacer/shared-models": ["libs/shared-models/src/index.ts"]
     }
   },

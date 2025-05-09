@@ -10,7 +10,6 @@ export class UserController implements OnModuleInit {
   ) {}
 
   async onModuleInit() {
-    // Подписываемся на все топики USER сервиса
     Object.values(KAFKA_CONFIG.TOPICS.USER).forEach(topic => {
       this.userClient.subscribeToResponseOf(topic);
     });

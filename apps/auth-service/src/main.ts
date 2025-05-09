@@ -1,21 +1,30 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
-
-import { Logger } from '@nestjs/common';
+import { Logger } from '@nestjs/common';  
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app/app.module';
+import { AuthModule } from './app/app.module';
+import { MicroserviceOptions, Transport } from '@nestjs/microservices';
+import { KAFKA_CONFIG } from '@marketplacer/configuration';
+import { HttpToRpcExceptionFilter } from '@marketplacer/shared-backend';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  const globalPrefix = 'api';
-  app.setGlobalPrefix(globalPrefix);
-  const port = process.env.PORT || 3000;
-  await app.listen(port);
-  Logger.log(
-    `🚀 Application is running on: http://localhost:${port}/${globalPrefix}`
-  );
+
+  const logger = new Logger('auth-service');
+  const app = await NestFactory.createMicroservice<MicroserviceOptions>(AuthModule, {
+    transport: Transport.KAFKA,
+    options: {
+      client: {
+          brokers: KAFKA_CONFIG.BROKERS,
+          clientId: KAFKA_CONFIG.CLIENT_IDS.AUTH_SERVICE,
+      },
+      consumer: {
+        groupId: KAFKA_CONFIG.CONSUMER_GROUPS.AUTH_SERVICE,
+      },
+    },
+  });
+
+  app.useGlobalFilters(new HttpToRpcExceptionFilter());
+
+  app.listen();
+  logger.log(`🚀 auth-service is up and running ...`);
 }
 
 bootstrap();

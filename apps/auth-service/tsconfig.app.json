@@ -8,5 +8,5 @@
     "emitDecoratorMetadata": true,
     "target": "es2021"
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts", "../../libs/shared-backend/src/guards/role.guard.ts", "../../libs/shared-backend/src/guards/jwt-auth.guard.ts"]
 }

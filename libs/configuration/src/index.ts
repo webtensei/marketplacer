@@ -1,2 +1,1 @@
-export * from './lib/configuration';
-export * from './lib/kafka';
+export * from './kafka';

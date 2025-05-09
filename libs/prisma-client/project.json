@@ -19,7 +19,7 @@
       }
     },
     "migrate": {
-      "command": "prisma migrate dev",
+      "command": "prisma migrate dev --name migration-unnamed",
       "options": {
         "cwd": "libs/prisma-client"
       }

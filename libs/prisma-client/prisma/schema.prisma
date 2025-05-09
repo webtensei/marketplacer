@@ -13,11 +13,97 @@ datasource db {
   url      = env("DEV_DATABASE_URL")
 }
 
-model User {
-  username           Int                @id @unique
-  password           String
-  created_at         DateTime           @default(now())
-
-  @@map("user")
+enum IntegrationType {
+  OZON
+  WILDBERRIES
+  YANDEX_MARKET
 }
 
+enum Role {
+  SPECTATOR
+  WORKER
+}
+
+enum Provider {
+  GOOGLE
+  YANDEX
+}
+
+model User {
+  id            String     @id @default(uuid())
+  username      String     @unique
+  is_activated  Boolean    @default(false)
+  password      String
+  name          String?
+  surname       String?
+  patronymic    String?
+  phone         String?    @unique
+  creation_date DateTime   @default(now())
+  updated_at    DateTime   @updatedAt
+  is_blocked    Boolean    @default(false)
+
+  team_memberships  TeamMember[]
+  owned_teams   Team[]     @relation("TeamOwner")
+  tokens Token[]
+  @@map("users")
+}
+
+model Token {
+  id         String   @id @default(uuid())
+  token String @unique
+  expires_at DateTime
+  creation_date DateTime @default(now())
+  user_id String
+  user_agent String
+  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  @@map("tokens")
+}
+
+model TeamMember {
+  id            String   @id @default(uuid())
+  role          Role
+  creation_date DateTime @default(now())
+  updated_at    DateTime @updatedAt
+
+  // Связи
+  user_id String
+  user    User   @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  team_id String
+  team    Team   @relation(fields: [team_id], references: [id], onDelete: Cascade)
+
+  @@unique([user_id, team_id])
+  @@map("team_members")
+}
+
+model Team {
+  id            String            @id @default(uuid())
+  name          String
+  description   String?
+  creation_date DateTime          @default(now())
+  updated_at    DateTime          @updatedAt
+
+  // Связи
+  owner_id String @map("owner_id")
+  owner    User   @relation("TeamOwner", fields: [owner_id], references: [id], onDelete: Restrict)
+
+  team_members   TeamMember[]
+  integrations TeamIntegration[]
+
+  @@map("teams")
+}
+
+model TeamIntegration {
+  id String @id @default(uuid())
+  created_at DateTime @default(now()) @map("created_at")
+  updated_at DateTime @updatedAt @map("updated_at")
+
+  // Связи
+  team_id        String
+  team          Team        @relation(fields: [team_id], references: [id], onDelete: Cascade)
+
+  type          IntegrationType
+
+  @@unique([team_id, type])
+  @@map("team_integrations")
+}
