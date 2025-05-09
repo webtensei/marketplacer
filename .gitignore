@@ -46,3 +46,4 @@ vite.config.*.timestamp*
 # Next.js
 .next
 out
+.env
