@@ -7,10 +7,13 @@ export const routes = {
   },
   auth: {
     login() {
-      return routes.root.concat("login/");
+      return routes.root.concat("login");
     },
     register() {
-      return routes.root.concat("register/");
+      return routes.root.concat("register");
+    },
+    verifyEmail() {
+      return routes.root.concat("verify-email");
     },
   },
 };

@@ -30,12 +30,13 @@ const AuthView: React.FC = () => {
       <div className="w-full bg-accent min-h-full sm:min-w-[350px] sm:w-3/12 px-8 py-24 flex flex-col h-[100vh] justify-between">
       <motion.div className="gap-4 flex flex-col">
         <h3 className=" text-2xl w-full border-b-4 border-b-primary">
-          {location.pathname === routes.auth.login() && "Авторизация"}
-          {location.pathname === routes.auth.register() && "Регистрация"}
+          {location.pathname.startsWith(routes.auth.login()) && "Авторизация"}
+          {location.pathname.startsWith(routes.auth.register()) && "Регистрация"}
+          {location.pathname.startsWith(routes.auth.verifyEmail()) && "Подтверждение почты"}
         </h3>
         <Outlet />
-        {location.pathname === routes.auth.login() && <p>Нет аккаунта? <Link color="primary" className="p-0 cursor-pointer" onPress={() => navigate(routes.auth.register())}>Зарегистрироваться</Link></p>}
-        {location.pathname === routes.auth.register() && <p>Есть аккаунт? <Link color="primary" className="p-0 cursor-pointer" onPress={() => navigate(routes.auth.login())}>На страницу входа</Link></p>}
+        {location.pathname.startsWith(routes.auth.login()) && <p>Нет аккаунта? <Link color="primary" className="p-0 cursor-pointer" onPress={() => navigate(routes.auth.register())}>Зарегистрироваться</Link></p>}
+        {location.pathname.startsWith(routes.auth.register()) && <p>Есть аккаунт? <Link color="primary" className="p-0 cursor-pointer" onPress={() => navigate(routes.auth.login())}>На страницу входа</Link></p>}
 
       </motion.div>
 

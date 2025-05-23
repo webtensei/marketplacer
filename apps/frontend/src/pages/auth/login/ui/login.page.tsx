@@ -1,7 +1,5 @@
 import { Input } from "@nextui-org/react";
 import { Button } from "@nextui-org/react";
-import { Chip } from "@nextui-org/react";
-import { motion } from "framer-motion";
 
 export const LoginPage = () => {
   return (
