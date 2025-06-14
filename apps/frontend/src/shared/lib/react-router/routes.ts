@@ -1,19 +1,19 @@
-import { env } from "@/shared/config";
+import { env } from '@/shared/config';
 
 export const routes = {
-  root: "/",
+  root: '/',
   home() {
     return routes.root;
   },
   auth: {
     login() {
-      return routes.root.concat("login");
+      return routes.root.concat('login');
     },
     register() {
-      return routes.root.concat("register");
+      return routes.root.concat('register');
     },
     verifyEmail() {
-      return routes.root.concat("verify-email");
+      return routes.root.concat('verify-email');
     },
   },
 };

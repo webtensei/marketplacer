@@ -1,7 +1,7 @@
 import { createElement } from "react";
 import { RouteObject } from "react-router-dom";
 import { routes } from "@shared/lib/react-router";
-import { LoginPage } from "./ui/login.page";
+import { LoginPage } from "./login.page";
 
 export const LoginRoute = (...rest: RouteObject[]): RouteObject => {
   return {
